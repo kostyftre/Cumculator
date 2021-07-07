@@ -8,6 +8,8 @@ import android.view.ViewDebug;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
@@ -27,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     private Button button_mult;
     private Button button_del;
     private Button button_total;
+    private Button button_left;
+    private Button button_right;
+
     private String all;
 
 
@@ -66,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
         button_mult = findViewById(R.id.button_mult);
         button_del = findViewById(R.id.button_del);
         button_total = findViewById(R.id.button_total);
+        button_left = findViewById(R.id.button_left);
+        button_right = findViewById(R.id.button_right);
         all="";
     }
 
@@ -150,12 +157,28 @@ public class MainActivity extends AppCompatActivity {
             textView.setText(all);
         });
 
+        button_left.setOnClickListener(v -> {
+            all=all+")";
+            textView.setText(all);
+        });
+        button_right.setOnClickListener(v -> {
+            all=all+"(";
+            textView.setText(all);
+        });
+
+
         button_total.setOnClickListener(v -> {
+            int a;
+            try {
+                a=superCalculator(all);
+                all= ""+a;
+                textView.setText(all);
+            }
+            catch (Exception e){
+                textView.setText("Неверно введённое выражение!");
+            }
 
-            int a=superCalculator(all);
 
-            all= ""+a;
-           textView.setText(all);
 
 
         });

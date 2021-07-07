@@ -18,4 +18,6 @@
     <string name="_mult">*</string>
     <string name="_div">/</string>
     <string name="_total">=</string>
+    <string name="_right">(</string>
+    <string name="_left">)</string>
 </resources>
